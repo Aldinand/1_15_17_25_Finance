@@ -265,6 +265,172 @@
                 }
             }
         },
+        "/api/laporan-keuangan": {
+            "get": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Get all financial reports",
+                "operationId": "e6b4b13a39c005ec630b3c196e15807f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Create a new financial report",
+                "operationId": "0f9944ead60a93a0702c0f0dafac5993",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "periode",
+                                    "total_pemasukan",
+                                    "total_pengeluaran"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "periode": {
+                                        "type": "string",
+                                        "example": "2025-01"
+                                    },
+                                    "total_pemasukan": {
+                                        "type": "integer",
+                                        "example": 5000000
+                                    },
+                                    "total_pengeluaran": {
+                                        "type": "integer",
+                                        "example": 3000000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/laporan-keuangan/{id}": {
+            "get": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Get a financial report by ID",
+                "operationId": "b5964ef0fec26a273158a47e7c2e8a56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Update a financial report",
+                "operationId": "df477e993d3dd34a896accf33fe3f041",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "periode": {
+                                        "type": "string",
+                                        "example": "2025-01"
+                                    },
+                                    "total_pemasukan": {
+                                        "type": "integer",
+                                        "example": 7000000
+                                    },
+                                    "total_pengeluaran": {
+                                        "type": "integer",
+                                        "example": 4000000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful update"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Delete a financial report",
+                "operationId": "98f4a53a89afb66ec75fcc6a037bde49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/api/transaksi": {
             "post": {
                 "tags": [
@@ -513,6 +679,10 @@
         {
             "name": "Category",
             "description": "Category"
+        },
+        {
+            "name": "Laporan Keuangan",
+            "description": "Laporan Keuangan"
         },
         {
             "name": "Transaksi",
