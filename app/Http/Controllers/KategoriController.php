@@ -174,6 +174,7 @@ class KategoriController extends Controller
      *     )
      * )
      */
+<<<<<<< HEAD
 
      // /**
 //  * @OA\Get(
@@ -187,6 +188,8 @@ class KategoriController extends Controller
 //     ...
 // }
 
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function destroy($id)
     {
         $kategori = Kategori::findOrFail($id);

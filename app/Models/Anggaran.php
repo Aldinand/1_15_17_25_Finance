@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+<<<<<<< HEAD
 /**
  * @OA\Schema(
  *     schema="Anggaran",
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * )
  */
 
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
 class Anggaran extends Model
 {
     use HasFactory;

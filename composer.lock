@@ -8491,12 +8491,20 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
+<<<<<<< HEAD
     "stability-flags": {},
+=======
+    "stability-flags": [],
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
+<<<<<<< HEAD
     "platform-dev": {},
+=======
+    "platform-dev": [],
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     "plugin-api-version": "2.6.0"
 }

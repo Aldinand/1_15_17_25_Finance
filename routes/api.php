@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AnggaranController;
@@ -19,6 +20,11 @@ use App\Http\Controllers\AnggaranController;
 Route::group([], function () {
     Route::get('category', [CategoryController::class, 'listCategory']);
 });
+=======
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\KategoriController;
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
 
 Route::middleware('auth:api')->prefix('kategoris')->group(function () {
     Route::get('/', [KategoriController::class, 'index']);         // GET /api/kategoris
@@ -40,6 +46,7 @@ Route::group([], function () {
     Route::get('category', [CategoryController::class, 'listCategory']);
 });
 
+<<<<<<< HEAD
 Route::prefix('anggaran')->group(function () {
     Route::get('/', [AnggaranController::class, 'index']);
     Route::post('/', [AnggaranController::class, 'store']);
@@ -47,3 +54,5 @@ Route::prefix('anggaran')->group(function () {
     Route::put('/{id}', [AnggaranController::class, 'update']);
     Route::delete('/{id}', [AnggaranController::class, 'destroy']);
 });
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0

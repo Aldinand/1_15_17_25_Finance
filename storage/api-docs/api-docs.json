@@ -53,6 +53,7 @@
                 }
             }
         },
+<<<<<<< HEAD
         "/api/anggaran": {
             "get": {
                 "tags": [
@@ -198,6 +199,8 @@
                 }
             }
         },
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
         "/api/kategoris": {
             "get": {
                 "tags": [
@@ -816,6 +819,7 @@
             }
         }
     },
+<<<<<<< HEAD
     "components": {
         "schemas": {
             "Anggaran": {
@@ -851,6 +855,10 @@
             "description": "Manajemen data anggaran"
         },
         {
+=======
+    "tags": [
+        {
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
             "name": "Kategori",
             "description": "Operations related to categories"
         },

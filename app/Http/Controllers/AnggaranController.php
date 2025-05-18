@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anggaran;
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
 /**
  * @OA\Tag(
  *     name="Anggaran",
@@ -25,11 +26,16 @@ class AnggaranController extends Controller
      *     )
      * )
      */
+=======
+class AnggaranController extends Controller
+{
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function index()
     {
         return Anggaran::all();
     }
 
+<<<<<<< HEAD
     /**
      * @OA\Post(
      *     path="/api/anggaran",
@@ -46,6 +52,8 @@ class AnggaranController extends Controller
      *     )
      * )
      */
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function store(Request $request)
     {
         $request->validate([
@@ -58,6 +66,7 @@ class AnggaranController extends Controller
         return response()->json($anggaran, 201);
     }
 
+<<<<<<< HEAD
     /**
      * @OA\Get(
      *     path="/api/anggaran/{id}",
@@ -76,11 +85,14 @@ class AnggaranController extends Controller
      *     )
      * )
      */
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function show($id)
     {
         return Anggaran::findOrFail($id);
     }
 
+<<<<<<< HEAD
     /**
      * @OA\Put(
      *     path="/api/anggaran/{id}",
@@ -103,6 +115,8 @@ class AnggaranController extends Controller
      *     )
      * )
      */
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function update(Request $request, $id)
     {
         $anggaran = Anggaran::findOrFail($id);
@@ -110,6 +124,7 @@ class AnggaranController extends Controller
         return response()->json($anggaran, 200);
     }
 
+<<<<<<< HEAD
     /**
      * @OA\Delete(
      *     path="/api/anggaran/{id}",
@@ -127,9 +142,15 @@ class AnggaranController extends Controller
      *     )
      * )
      */
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
     public function destroy($id)
     {
         Anggaran::destroy($id);
         return response()->json(null, 204);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
