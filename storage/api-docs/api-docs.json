@@ -53,7 +53,6 @@
                 }
             }
         },
-<<<<<<< HEAD
         "/api/anggaran": {
             "get": {
                 "tags": [
@@ -199,8 +198,6 @@
                 }
             }
         },
-=======
->>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
         "/api/kategoris": {
             "get": {
                 "tags": [
@@ -819,30 +816,46 @@
             }
         }
     },
-<<<<<<< HEAD
     "components": {
         "schemas": {
             "Anggaran": {
+                "title": "Anggaran",
                 "required": [
+                    "user_id",
+                    "kategori_id",
                     "jumlah_anggaran",
                     "periode"
                 ],
                 "properties": {
-                    "user_id": {
+                    "id": {
                         "type": "integer",
                         "example": 1
                     },
-                    "kategori_id": {
+                    "user_id": {
                         "type": "integer",
                         "example": 2
                     },
+                    "kategori_id": {
+                        "type": "integer",
+                        "example": 3
+                    },
                     "jumlah_anggaran": {
                         "type": "integer",
-                        "example": 5000000
+                        "example": 1000000
                     },
                     "periode": {
                         "type": "string",
-                        "example": "2025-05"
+                        "example": "2025-01"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-19T08:30:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-19T08:30:00Z"
                     }
                 },
                 "type": "object"
@@ -855,10 +868,6 @@
             "description": "Manajemen data anggaran"
         },
         {
-=======
-    "tags": [
-        {
->>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
             "name": "Kategori",
             "description": "Operations related to categories"
         },
