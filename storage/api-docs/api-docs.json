@@ -1,0 +1,878 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Documentation for the Bookstore API",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "List of Categories",
+                "description": "Retrieve a list of book categories",
+                "operationId": "listCategory",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "success": true,
+                                    "message": "Successfully retrieved categories",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "name": "Fiction"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "name": "Non-Fiction"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+<<<<<<< HEAD
+        "/api/anggaran": {
+            "get": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Ambil semua data anggaran",
+                "operationId": "76fde212c0bdc173eac6e4b75a203ee6",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil ambil data anggaran",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Anggaran"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Tambah data anggaran",
+                "operationId": "0d4c69c25c7df5eb633b0acfb252ebe0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Anggaran"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil tambah data anggaran",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Anggaran"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anggaran/{id}": {
+            "get": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Tampilkan detail anggaran",
+                "operationId": "72aa57957b37c2f3ec137341ea889fca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil ambil data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Anggaran"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Update data anggaran",
+                "operationId": "2768d17287faaf6199790155be920ae2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Anggaran"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Berhasil update data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Anggaran"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Hapus data anggaran",
+                "operationId": "a70b5fa199af173e3c0c23df30440634",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Berhasil hapus"
+                    }
+                }
+            }
+        },
+=======
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
+        "/api/kategoris": {
+            "get": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Display a listing of the categories",
+                "description": "Get a list of all categories for the authenticated user",
+                "operationId": "indexKategori",
+                "responses": {
+                    "200": {
+                        "description": "List of categories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "nama_kategori": {
+                                                "type": "string"
+                                            },
+                                            "tipe": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Store a newly created category",
+                "description": "Create a new category",
+                "operationId": "storeKategori",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_kategori",
+                                    "tipe"
+                                ],
+                                "properties": {
+                                    "nama_kategori": {
+                                        "type": "string",
+                                        "example": "Food"
+                                    },
+                                    "tipe": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Pemasukan",
+                                            "Pengeluaran"
+                                        ]
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "nama_kategori": {
+                                            "type": "string"
+                                        },
+                                        "tipe": {
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/kategoris/{id}": {
+            "put": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Update the specified category",
+                "description": "Update an existing category by ID",
+                "operationId": "updateKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the category to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama_kategori",
+                                    "tipe"
+                                ],
+                                "properties": {
+                                    "nama_kategori": {
+                                        "type": "string",
+                                        "example": "Transportation"
+                                    },
+                                    "tipe": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Pemasukan",
+                                            "Pengeluaran"
+                                        ]
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Category updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "nama_kategori": {
+                                            "type": "string"
+                                        },
+                                        "tipe": {
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Category not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Remove the specified category",
+                "description": "Delete a category by ID",
+                "operationId": "destroyKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the category to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Category deleted successfully"
+                    },
+                    "404": {
+                        "description": "Category not found"
+                    }
+                }
+            }
+        },
+        "/api/laporan-keuangan": {
+            "get": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Get all financial reports",
+                "operationId": "e6b4b13a39c005ec630b3c196e15807f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Create a new financial report",
+                "operationId": "0f9944ead60a93a0702c0f0dafac5993",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "periode",
+                                    "total_pemasukan",
+                                    "total_pengeluaran"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "periode": {
+                                        "type": "string",
+                                        "example": "2025-01"
+                                    },
+                                    "total_pemasukan": {
+                                        "type": "integer",
+                                        "example": 5000000
+                                    },
+                                    "total_pengeluaran": {
+                                        "type": "integer",
+                                        "example": 3000000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/laporan-keuangan/{id}": {
+            "get": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Get a financial report by ID",
+                "operationId": "b5964ef0fec26a273158a47e7c2e8a56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Update a financial report",
+                "operationId": "df477e993d3dd34a896accf33fe3f041",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "periode": {
+                                        "type": "string",
+                                        "example": "2025-01"
+                                    },
+                                    "total_pemasukan": {
+                                        "type": "integer",
+                                        "example": 7000000
+                                    },
+                                    "total_pengeluaran": {
+                                        "type": "integer",
+                                        "example": 4000000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful update"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Delete a financial report",
+                "operationId": "98f4a53a89afb66ec75fcc6a037bde49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/transaksi": {
+            "post": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Buat transaksi baru",
+                "operationId": "storeTransaksi",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "tanggal",
+                                    "jumlah",
+                                    "tipe"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "description": "Opsional, ID user yang valid",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "kategori_id": {
+                                        "description": "Opsional, ID kategori yang valid",
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "tanggal": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2024-05-05"
+                                    },
+                                    "jumlah": {
+                                        "type": "integer",
+                                        "example": 100000
+                                    },
+                                    "tipe": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Pemasukan",
+                                            "Pengeluaran"
+                                        ],
+                                        "example": "Pemasukan"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Transaksi berhasil dibuat",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validasi gagal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transaksi/{id}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Menampilkan detail transaksi",
+                "operationId": "showTransaksi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID dari transaksi yang ingin ditampilkan",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail transaksi berhasil ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Transaksi tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Mengupdate transaksi yang ada",
+                "operationId": "updateTransaksi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID transaksi yang akan diupdate",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "tanggal",
+                                    "jumlah",
+                                    "tipe"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "kategori_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "tanggal": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2024-05-05"
+                                    },
+                                    "jumlah": {
+                                        "type": "integer",
+                                        "example": 100000
+                                    },
+                                    "tipe": {
+                                        "type": "string",
+                                        "enum": [
+                                            "Pemasukan",
+                                            "Pengeluaran"
+                                        ],
+                                        "example": "Pemasukan"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Transaksi berhasil diperbarui",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Transaksi tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Menghapus transaksi",
+                "operationId": "deleteTransaksi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID transaksi yang akan dihapus",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Transaksi berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Transaksi tidak ditemukan"
+                    }
+                }
+            }
+        }
+    },
+<<<<<<< HEAD
+    "components": {
+        "schemas": {
+            "Anggaran": {
+                "required": [
+                    "jumlah_anggaran",
+                    "periode"
+                ],
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "kategori_id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "jumlah_anggaran": {
+                        "type": "integer",
+                        "example": 5000000
+                    },
+                    "periode": {
+                        "type": "string",
+                        "example": "2025-05"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Anggaran",
+            "description": "Manajemen data anggaran"
+        },
+        {
+=======
+    "tags": [
+        {
+>>>>>>> 5b55bab2baf76c506d967b580422ecafa36cbfc0
+            "name": "Kategori",
+            "description": "Operations related to categories"
+        },
+        {
+            "name": "Category",
+            "description": "Category"
+        },
+        {
+            "name": "Laporan Keuangan",
+            "description": "Laporan Keuangan"
+        },
+        {
+            "name": "Transaksi",
+            "description": "Transaksi"
+        }
+    ]
+}
