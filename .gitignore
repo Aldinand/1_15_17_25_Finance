@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+*
+!data/
+!.gitignore
+=======
 /.phpunit.cache
 /node_modules
 /public/build
@@ -21,3 +26,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+>>>>>>> 419c960941f3ac46bf381e48214e2af46c34169c
