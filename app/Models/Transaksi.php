@@ -16,6 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $tipe
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * 
+ * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\Kategori|null $kategori
+ *
+ * @mixin \Eloquent
  */
 class Transaksi extends Model
 {
@@ -31,20 +36,19 @@ class Transaksi extends Model
         'tipe',
     ];
 
-    // Relasi dengan user
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    // Relasi ke tabel users
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relasi dengan kategori
+    // Relasi ke tabel kategori
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
     }
-
-    // Optional: format tanggal otomatis jika diinginkan
-    protected $casts = [
-        'tanggal' => 'date',
-    ];
 }

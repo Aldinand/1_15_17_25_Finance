@@ -53,7 +53,7 @@ class AnggaranSwaggerController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'kategori_id' => 'required|exists:kategori,id',
+            'kategori_id' => 'required|exists:kategori,id', // ganti sesuai nama tabel kategori di DB
             'jumlah_anggaran' => 'required|integer',
             'periode' => 'required|string',
         ]);
@@ -67,7 +67,7 @@ class AnggaranSwaggerController extends Controller
      *     path="/anggaran/{id}",
      *     operationId="getAnggaranById",
      *     tags={"Anggaran"},
-     *     summary="Tampilkan detail anggaran",
+     *     summary="Tampilkan detail anggaran berdasarkan ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -130,7 +130,7 @@ class AnggaranSwaggerController extends Controller
 
         $request->validate([
             'user_id' => 'sometimes|exists:users,id',
-            'kategori_id' => 'sometimes|exists:kategori,id',
+            'kategori_id' => 'sometimes|exists:kategori,id', // sesuaikan tabel kategori
             'jumlah_anggaran' => 'sometimes|integer',
             'periode' => 'sometimes|string',
         ]);
@@ -170,5 +170,39 @@ class AnggaranSwaggerController extends Controller
 
         $anggaran->delete();
         return response()->json(null, 204);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/anggaran/user/{user_id}",
+     *     operationId="getAnggaranByUserId",
+     *     tags={"Anggaran"},
+     *     summary="Ambil data anggaran berdasarkan user_id",
+     *     @OA\Parameter(
+     *         name="user_id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Berhasil ambil data anggaran",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Anggaran"))
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Data tidak ditemukan"
+     *     )
+     * )
+     */
+    public function getByUserId($user_id)
+    {
+        $anggaran = Anggaran::where('user_id', $user_id)->get();
+
+        if ($anggaran->isEmpty()) {
+            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+        }
+
+        return response()->json($anggaran, 200);
     }
 }

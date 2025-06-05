@@ -52,6 +52,58 @@ class TransaksiSwaggerController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *     path="/transaksi/user/{user_id}",
+     *     tags={"Transaksi"},
+     *     summary="Menampilkan transaksi berdasarkan user_id",
+     *     operationId="getTransaksiByUserId",
+     *     @OA\Parameter(
+     *         name="user_id",
+     *         in="path",
+     *         required=true,
+     *         description="ID pengguna untuk mencari transaksi",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Daftar transaksi user berhasil diambil",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(ref="#/components/schemas/Transaksi")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tidak ada transaksi ditemukan untuk user ini",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada transaksi ditemukan untuk user ini.")
+     *         )
+     *     )
+     * )
+     */
+    public function getByUser($user_id)
+    {
+        $transaksis = Transaksi::where('user_id', $user_id)->get();
+
+        if ($transaksis->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada transaksi ditemukan untuk user ini.'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $transaksis
+        ]);
+    }
+
+    /**
      * @OA\Post(
      *     path="/transaksi",
      *     tags={"Transaksi"},
@@ -89,18 +141,18 @@ class TransaksiSwaggerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'sometimes|exists:users,id',
+            'user_id'     => 'sometimes|exists:users,id',
             'kategori_id' => 'sometimes|exists:kategori,id',
-            'tanggal' => 'required|date',
-            'jumlah' => 'required|integer',
-            'tipe' => 'required|string|in:Pemasukan,Pengeluaran',
+            'tanggal'     => 'required|date',
+            'jumlah'      => 'required|integer',
+            'tipe'        => 'required|string|in:Pemasukan,Pengeluaran',
         ]);
 
         $transaksi = Transaksi::create($request->all());
 
         return response()->json([
             'success' => true,
-            'data' => $transaksi
+            'data'    => $transaksi
         ], 201);
     }
 
@@ -127,16 +179,21 @@ class TransaksiSwaggerController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Transaksi tidak ditemukan"
+     *         description="Transaksi tidak ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Transaksi tidak ditemukan")
+     *         )
      *     )
      * )
      */
     public function show($id)
     {
         $transaksi = Transaksi::findOrFail($id);
+
         return response()->json([
             'success' => true,
-            'data' => $transaksi
+            'data'    => $transaksi
         ]);
     }
 
@@ -174,18 +231,22 @@ class TransaksiSwaggerController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Transaksi tidak ditemukan"
+     *         description="Transaksi tidak ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Transaksi tidak ditemukan")
+     *         )
      *     )
      * )
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'sometimes|exists:users,id',
+            'user_id'     => 'sometimes|exists:users,id',
             'kategori_id' => 'sometimes|exists:kategori,id',
-            'tanggal' => 'required|date',
-            'jumlah' => 'required|integer',
-            'tipe' => 'required|string|in:Pemasukan,Pengeluaran',
+            'tanggal'     => 'required|date',
+            'jumlah'      => 'required|integer',
+            'tipe'        => 'required|string|in:Pemasukan,Pengeluaran',
         ]);
 
         $transaksi = Transaksi::findOrFail($id);
@@ -193,7 +254,7 @@ class TransaksiSwaggerController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $transaksi
+            'data'    => $transaksi
         ]);
     }
 
@@ -216,7 +277,11 @@ class TransaksiSwaggerController extends Controller
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Transaksi tidak ditemukan"
+     *         description="Transaksi tidak ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Transaksi tidak ditemukan")
+     *         )
      *     )
      * )
      */

@@ -131,4 +131,40 @@ class LaporanKeuanganSwaggerController extends Controller
         LaporanKeuangan::destroy($id);
         return response()->json(null, 204);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/laporan-keuangans/user/{user_id}",
+     *     summary="Get all financial reports by user ID",
+     *     tags={"Laporan Keuangan"},
+     *     @OA\Parameter(
+     *         name="user_id",
+     *         in="path",
+     *         description="ID of the user",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found or no reports available"
+     *     )
+     * )
+     */
+    public function getByUser($user_id)
+    {
+        // Ambil semua laporan keuangan yang memiliki user_id sesuai
+        $laporanUser = LaporanKeuangan::where('user_id', $user_id)->get();
+
+        if ($laporanUser->isEmpty()) {
+            return response()->json([
+                'message' => 'Tidak ada laporan keuangan untuk user_id ' . $user_id
+            ], 404);
+        }
+
+        return response()->json($laporanUser, 200);
+    }
 }

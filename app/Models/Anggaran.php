@@ -20,18 +20,42 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-05-19T08:30:00Z")
  * )
  */
-
-
 class Anggaran extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'anggaran';
-    
+
     protected $fillable = [
         'user_id',
         'kategori_id',
         'jumlah_anggaran',
         'periode',
     ];
+
+    protected $casts = [
+        'id' => 'integer',
+        'user_id' => 'integer',
+        'kategori_id' => 'integer',
+        'jumlah_anggaran' => 'integer',
+        'periode' => 'string',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    /**
+     * Relasi ke User
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relasi ke Kategori
+     */
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

@@ -80,7 +80,7 @@
                 "tags": [
                     "Anggaran"
                 ],
-                "summary": "Tampilkan detail anggaran",
+                "summary": "Tampilkan detail anggaran berdasarkan ID",
                 "operationId": "getAnggaranById",
                 "parameters": [
                     {
@@ -169,6 +169,43 @@
                 "responses": {
                     "204": {
                         "description": "Berhasil hapus"
+                    },
+                    "404": {
+                        "description": "Data tidak ditemukan"
+                    }
+                }
+            }
+        },
+        "/anggaran/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Anggaran"
+                ],
+                "summary": "Ambil data anggaran berdasarkan user_id",
+                "operationId": "getAnggaranByUserId",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil ambil data anggaran",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Anggaran"
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
                         "description": "Data tidak ditemukan"
@@ -602,6 +639,34 @@
                 }
             }
         },
+        "/laporan-keuangans/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Laporan Keuangan"
+                ],
+                "summary": "Get all financial reports by user ID",
+                "operationId": "9d99eeb5fd5d532fde44a195e8cfeca8",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of the user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "User not found or no reports available"
+                    }
+                }
+            }
+        },
         "/transaksi": {
             "get": {
                 "tags": [
@@ -724,6 +789,70 @@
                 }
             }
         },
+        "/transaksi/user/{user_id}": {
+            "get": {
+                "tags": [
+                    "Transaksi"
+                ],
+                "summary": "Menampilkan transaksi berdasarkan user_id",
+                "operationId": "getTransaksiByUserId",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID pengguna untuk mencari transaksi",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Daftar transaksi user berhasil diambil",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Transaksi"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Tidak ada transaksi ditemukan untuk user ini",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tidak ada transaksi ditemukan untuk user ini."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/transaksi/{id}": {
             "get": {
                 "tags": [
@@ -763,7 +892,24 @@
                         }
                     },
                     "404": {
-                        "description": "Transaksi tidak ditemukan"
+                        "description": "Transaksi tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Transaksi tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -847,7 +993,24 @@
                         }
                     },
                     "404": {
-                        "description": "Transaksi tidak ditemukan"
+                        "description": "Transaksi tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Transaksi tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -873,7 +1036,24 @@
                         "description": "Transaksi berhasil dihapus"
                     },
                     "404": {
-                        "description": "Transaksi tidak ditemukan"
+                        "description": "Transaksi tidak ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Transaksi tidak ditemukan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1134,16 +1314,44 @@
             "User": {
                 "title": "User",
                 "required": [
-                    "id",
-                    "nama",
+                    "name",
                     "email"
                 ],
                 "properties": {
                     "id": {
                         "type": "integer",
-                        "readOnly": true
+                        "example": 1
                     },
-                    "nama": {
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "john@example.com"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-06-04T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-06-04T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "UserCreateRequest": {
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
                         "type": "string",
                         "example": "John Doe"
                     },
@@ -1155,58 +1363,26 @@
                     "password": {
                         "type": "string",
                         "format": "password",
-                        "writeOnly": true
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "readOnly": true
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "readOnly": true
-                    }
-                },
-                "type": "object"
-            },
-            "UserCreateRequest": {
-                "required": [
-                    "nama",
-                    "email",
-                    "password"
-                ],
-                "properties": {
-                    "nama": {
-                        "type": "string",
-                        "example": "John Doe"
-                    },
-                    "email": {
-                        "type": "string",
-                        "format": "email",
-                        "example": "john@example.com"
-                    },
-                    "password": {
-                        "type": "string",
-                        "format": "password"
+                        "example": "secret123"
                     }
                 },
                 "type": "object"
             },
             "UserUpdateRequest": {
                 "properties": {
-                    "nama": {
+                    "name": {
                         "type": "string",
-                        "example": "John Doe"
+                        "example": "John Doe Updated"
                     },
                     "email": {
                         "type": "string",
                         "format": "email",
-                        "example": "john@example.com"
+                        "example": "john_updated@example.com"
                     },
                     "password": {
                         "type": "string",
-                        "format": "password"
+                        "format": "password",
+                        "example": "newsecret123"
                     }
                 },
                 "type": "object"
